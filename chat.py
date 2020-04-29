@@ -8,19 +8,24 @@ def read_file(filename):
 			words.append(line)
 	return words
 
+#convert file
+def convert(words):
+	new = []
+	for word in words:
+		if 'Allen' in word:
+			sb = 'Allen'
+			continue
+		elif 'Tom' in word:
+			sb = 'Tom'
+			continue
+		new.append(sb + ': '+ word)
+	return new	
+
 # write file
 def write_file(filename, words):
-	sb = 'NB'
 	with open(filename, 'w') as f:
-		for word in words: 
-			if 'Allen' in word:
-				sb = 'Allen'
-				# f.write(word.strip() + ': ')
-			elif 'Tom' in word:
-				sb = 'Tom'
-				# f.write(word.strip() + ': ')
-			else:
-				f.write(sb + ': ' + word)			 
+		for word in words:
+			f.write(word + '\n')			 
 
 def main():
 	filename = 'input.txt'
@@ -28,7 +33,7 @@ def main():
 		words =	read_file(filename)
 	else:
 		print('file not found...')
-
+	words = convert(words)
 	write_file('output.txt', words)
 
 
