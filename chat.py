@@ -11,6 +11,7 @@ def read_file(filename):
 #convert file
 def convert(words):
 	new = []
+	sb = None
 	for word in words:
 		if 'Allen' in word:
 			sb = 'Allen'
@@ -18,7 +19,8 @@ def convert(words):
 		elif 'Tom' in word:
 			sb = 'Tom'
 			continue
-		new.append(sb + ': '+ word)
+		if sb:
+			new.append(sb + ': '+ word)
 	return new	
 
 # write file
